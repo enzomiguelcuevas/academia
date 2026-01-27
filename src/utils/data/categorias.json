@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "nombre": "Programación",
+    "descripcion": "Libros de desarrollo de software, algoritmos y lenguajes de programación",
+    "fecha_creacion": "2024-01-01T00:00:00Z",
+    "estado": "activo"
+  },
+  {
+    "id": 2,
+    "nombre": "Matemáticas",
+    "descripcion": "Libros de matemáticas aplicadas, cálculo, álgebra y estadística",
+    "fecha_creacion": "2024-01-01T00:00:00Z",
+    "estado": "activo"
+  },
+  {
+    "id": 3,
+    "nombre": "Literatura",
+    "descripcion": "Novelas, clásicos literarios, poesía y obras de ficción",
+    "fecha_creacion": "2024-01-01T00:00:00Z",
+    "estado": "activo"
+  },
+  {
+    "id": 4,
+    "nombre": "Historia",
+    "descripcion": "Libros históricos, documentos, biografías y análisis históricos",
+    "fecha_creacion": "2024-01-01T00:00:00Z",
+    "estado": "activo"
+  },
+  {
+    "id": 5,
+    "nombre": "Ciencias",
+    "descripcion": "Libros de ciencias naturales, física, química y biología",
+    "fecha_creacion": "2024-01-01T00:00:00Z",
+    "estado": "activo"
+  }
+]

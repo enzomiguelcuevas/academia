@@ -1,0 +1,82 @@
+<footer class="bg-dark text-light py-4 mt-5">
+    <div class="container">
+        <div class="row">
+            <!-- About Section -->
+            <div class="col-md-4 mb-4 mb-md-0">
+                <h5 class="mb-3">
+                    <i class="bi bi-book-half me-2"></i>Biblioteca Digital
+                </h5>
+                <p class="text-muted">
+                    Plataforma de gestión de biblioteca digital que permite el acceso a libros digitales, 
+                    gestión de matrículas y un sistema completo de catalogación.
+                </p>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="col-md-4 mb-4 mb-md-0">
+                <h5 class="mb-3">Enlaces Rápidos</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <a href="/" class="text-muted text-decoration-none">
+                            <i class="bi bi-house-door me-2"></i>Inicio
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="/catalog" class="text-muted text-decoration-none">
+                            <i class="bi bi-grid me-2"></i>Catálogo de Libros
+                        </a>
+                    </li>
+                    <% if (typeof user !== 'undefined' && user) { %>
+                        <li class="mb-2">
+                            <a href="/favorites" class="text-muted text-decoration-none">
+                                <i class="bi bi-heart me-2"></i>Mis Favoritos
+                            </a>
+                        </li>
+                        <% if (user.rol === 'admin') { %>
+                            <li class="mb-2">
+                                <a href="/admin/dashboard" class="text-muted text-decoration-none">
+                                    <i class="bi bi-gear me-2"></i>Panel Admin
+                                </a>
+                            </li>
+                        <% } %>
+                    <% } %>
+                </ul>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="col-md-4">
+                <h5 class="mb-3">Soporte</h5>
+                <ul class="list-unstyled text-muted">
+                    <li class="mb-2">
+                        <i class="bi bi-envelope me-2"></i>
+                        soporte@biblioteca.com
+                    </li>
+                    <li class="mb-2">
+                        <i class="bi bi-telephone me-2"></i>
+                        +1 234 567 890
+                    </li>
+                    <li class="mb-2">
+                        <i class="bi bi-clock me-2"></i>
+                        Lun - Vie: 9:00 AM - 6:00 PM
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Bottom Section -->
+        <hr class="border-secondary my-4">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <p class="text-muted mb-0">
+                    © 2024 Biblioteca Digital. Todos los derechos reservados.
+                </p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <small class="text-muted">
+                    Versión 1.0.0 | Desarrollado con 
+                    <i class="bi bi-heart-fill text-danger"></i> para la educación
+                </small>
+            </div>
+        </div>
+    </div>
+</footer>
