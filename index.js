@@ -14,7 +14,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:5173'],
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -45,9 +48,9 @@ const authRoutes = require('./src/routes/auth');
 const adminRoutes = require('./src/routes/admin');
 const libraryRoutes = require('./src/routes/library');
 
-app.use('/auth', authRoutes);
-app.use('/admin', adminRoutes);
-app.use('/', libraryRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api', libraryRoutes);
 
 // Home route
 app.get('/', (req, res) => {

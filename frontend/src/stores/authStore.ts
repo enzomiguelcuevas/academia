@@ -29,14 +29,17 @@ export const useAuthStore = create<AuthState>()(
         set({ isLoading: true });
         try {
           const response = await authService.login(credentials);
-          const { user } = response;
+          const { user, token } = response.data;
           
           set({
             user,
-            token: localStorage.getItem(STORAGE_KEYS.TOKEN),
+            token,
             isAuthenticated: true,
             isLoading: false,
           });
+          
+          localStorage.setItem(STORAGE_KEYS.TOKEN, token);
+          localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(user));
         } catch (error) {
           set({ isLoading: false });
           throw error;

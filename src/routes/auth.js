@@ -16,7 +16,12 @@ const router = express.Router();
 // Ruta de registro (solo admin puede registrar nuevos usuarios)
 router.post('/register', validateRegistrationData, async (req, res) => {
     try {
-        const { dni, nombre, apellido, email, telefono, password, rol = 'usuario' } = req.body;
+        const { dni, full_name, email, telefono, password, rol = 'usuario' } = req.body;
+        
+        // Separar full_name en nombre y apellido
+        const nameParts = full_name ? full_name.trim().split(' ') : ['', ''];
+        const nombre = nameParts[0] || '';
+        const apellido = nameParts.slice(1).join(' ') || '';
 
         // Verificar si el usuario ya existe
         const existingUser = await Usuario.buscarPorDni(dni);
