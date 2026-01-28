@@ -1,10 +1,16 @@
+require('dotenv').config(); // <--- ESTA LÍNEA TIENE QUE SER LA PRIMERA
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
 const cors = require('cors');
-require('dotenv').config();
+const { testConnection } = require('./src/config/database');
 
+// Debug rápido: esto te dirá en la consola si está leyendo el .env o no
+console.log("DEBUG ENV -> Usuario:", process.env.DB_USER, "Password:", process.env.DB_PASSWORD);
+
+testConnection(); 
 const app = express();
+// ... resto del código
 const PORT = process.env.PORT || 3000;
 
 // Middleware
@@ -15,14 +21,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Session configuration
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    // Agregamos un 'fallback' por si el .env falla
+    secret: process.env.SESSION_SECRET || 'clave-secreta-temporal', 
     resave: false,
     saveUninitialized: false,
     cookie: {
         secure: process.env.NODE_ENV === 'production',
-        maxAge: 24 * 60 * 60 * 1000 // 24 hours
+        maxAge: 24 * 60 * 60 * 1000 
     }
+
 }));
+// ... debajo de app.use(session({ ... }));
+const passport = require('passport'); // Asegúrate de que esté este require arriba
+app.use(passport.initialize());
+app.use(passport.session());
 
 // View engine setup
 app.set('view engine', 'ejs');
